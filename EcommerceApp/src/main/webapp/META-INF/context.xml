@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Links the global JNDI DataSource defined in Tomcat's conf/server.xml
+    (<GlobalNamingResources><Resource name="jdbc/EcommerceDB" .../>) into this web app
+    as java:comp/env/jdbc/EcommerceDB, which com.conn.DBConnect looks up first.
+
+    If server.xml has no such resource, DBConnect falls back to the db.url / DB_URL settings.
+-->
+<Context>
+    <ResourceLink name="jdbc/EcommerceDB" global="jdbc/EcommerceDB" type="javax.sql.DataSource"/>
+</Context>

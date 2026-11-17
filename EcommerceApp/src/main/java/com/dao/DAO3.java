@@ -364,7 +364,7 @@ public class DAO3 {
 		order_details v = null;
 		
 		try {
-			String sql = "select * from Order_details where Date = ?";
+			String sql = "select * from order_details where Date = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			ps.setString(1, d);

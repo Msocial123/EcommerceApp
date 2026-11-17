@@ -262,3 +262,32 @@ url: https://swapnilbamble1438.github.io/EcommerceApplication/
 
 This Project designed for practice purpose not full implementation
 
+
+## Database setup (MySQL)
+
+The app uses MySQL through `com.conn.DBConnect`.
+
+1. Create the database, tables, views and sample data:
+
+   ```bash
+   mysql -u root -p < EcommerceApp/db/schema.sql
+   ```
+
+2. Tell the app how to connect, in one of two ways.
+
+   **Tomcat JNDI (used first when present).** Put the MySQL driver jar in Tomcat's `lib/` folder and add this inside `<GlobalNamingResources>` in `conf/server.xml`:
+
+   ```xml
+   <Resource name="jdbc/EcommerceDB" auth="Container" type="javax.sql.DataSource"
+             driverClassName="com.mysql.cj.jdbc.Driver"
+             url="jdbc:mysql://localhost:3306/ecommerce?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC"
+             username="ecommerce" password="change-me"
+             maxTotal="20" maxIdle="5" maxWaitMillis="10000"
+             validationQuery="SELECT 1" testOnBorrow="true"/>
+   ```
+
+   `META-INF/context.xml` already links it into the app as `java:comp/env/jdbc/EcommerceDB`.
+
+   **Plain settings (fallback).** Set `DB_URL`, `DB_USERNAME` and `DB_PASSWORD` environment variables (or `-Ddb.url=...` system properties), or copy `src/main/resources/db.properties.example` to `db.properties` and edit it. The default URL is `jdbc:mysql://localhost:3306/ecommerce`.
+
+Connections opened during a request are closed automatically at the end of it by `com.conn.ConnectionCleanupFilter`.

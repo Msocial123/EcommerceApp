@@ -169,7 +169,7 @@ public int addContactus(contactus c) {
 			
 			int i = 0;
 			try{
-				String sql = "insert into Contactus(Name,Email_Id,Contact_No,Message) values(?,?,?,?)" ;
+				String sql = "insert into contactus(Name,Email_Id,Contact_No,Message) values(?,?,?,?)" ;
 				PreparedStatement ps = conn.prepareStatement(sql);
 			
 			
@@ -202,7 +202,7 @@ public List<contactus> getcontactus(){
 	contactus v = null;
 	
 	try {
-		String sql = "select * from Contactus";
+		String sql = "select * from contactus";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
 		ResultSet rs = ps.executeQuery();
@@ -237,7 +237,7 @@ public List<contactus> getcontactus(){
 	
 	int j = 0;
 	try{
-		String sql = "delete from Contactus where id= ?";
+		String sql = "delete from contactus where id= ?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 	
 		ps.setInt(1, c.getId());

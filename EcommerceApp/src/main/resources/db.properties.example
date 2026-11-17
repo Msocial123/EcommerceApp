@@ -1,0 +1,11 @@
+# Copy to db.properties (same folder) to configure the database without JNDI.
+# Each key can also be set as a -D system property (-Ddb.url=...) or an
+# environment variable (DB_URL, DB_USERNAME, DB_PASSWORD, DB_DRIVER, DB_JNDINAME),
+# which take precedence over this file.
+#
+# A Tomcat JNDI DataSource named jdbc/EcommerceDB (see README) is used instead when present.
+
+db.url=jdbc:mysql://localhost:3306/ecommerce?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+db.username=ecommerce
+db.password=change-me
+db.driver=com.mysql.cj.jdbc.Driver

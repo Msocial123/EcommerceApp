@@ -41,3 +41,6 @@ buildNumber.properties
 .project
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
+
+# Local database settings (may contain a password)
+src/main/resources/db.properties
